@@ -37,7 +37,7 @@ The library function loads an R library such as the tidyverse, providing access 
 
 ### Task 1: The console
 
-**Task** In the console (look below), type 2+2 and hit enter. What does it return? Type your answer below. **Answer:**
+**Task** In the console (look below), type 2+2 and hit enter. What does it return? Type your answer below. \*\*Answer: 4
 
 ### Task 2: Variables
 
@@ -47,6 +47,8 @@ The library function loads an R library such as the tidyverse, providing access 
 number <- 2
 ```
 
+number \<- 2
+
 Then type this code to multiply the variable called number by itself.
 
 ```{r}
@@ -55,7 +57,7 @@ number * number
 
 What does it return? Type your answer below:
 
-**Answer:**
+**Answer:**4
 
 ### Task 3: Install packages
 
@@ -217,9 +219,13 @@ umd_courses |>
     total_seats = sum(seats),
     mean_seats = mean(seats),
     median_seats = median(seats),
+    # add minimum seats here
     min_seats = min(seats),
-    max_seats = max(seats),
+    
+    # add maximum seats here
   ) |>
+  max_seats = max(seats)
+
   arrange(desc(total_seats))
 ```
 
