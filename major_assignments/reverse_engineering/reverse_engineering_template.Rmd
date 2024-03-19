@@ -69,23 +69,77 @@ homicide_data |>
 
 ### Sentence 2
 
--   **Sentence text**: [Paste in sentence to engineer here]
+-   **Sentence text**: Community leaders and residents say that leaves hundreds of families who have been robbed of a loved one without a chance at seeing justice done. Of the 1,002 homicides between 2015 and the beginning of this year, just 252 — one out of every four — resulted in an arrest."
 -   **Analysis summary**: [Write up two to three sentences describing the results of your analysis. Were you able to confirm the finding? If not, why not?]
 
 ```{r}
-# Put code to reverse engineer sentence here
+homicide_data |>
+  filter(str_detect(reported_date, "2015") | str_detect(reported_date, "2016") | str_detect(reported_date, "2017"))|>
+filter(str_detect(city, "Baltimore")) |>
+filter(str_detect(disposition, "Closed by arrest"))
 
-# Display results of code below this codeblock
+
+# Display results of code below this codebkloc
 
 ```
 
 ### Sentence 3
 
--   **Sentence text**: [Paste in sentence to engineer here]
--   **Analysis summary**: [Write up two to three sentences describing the results of your analysis. Were you able to confirm the finding? If not, why not?]
+-   **Sentence text**: n Chicago, the homicide arrest rate has dropped 21 percentage points, in Boston it has dropped 12 points and in St. Louis it is down 9.
+-   **Analysis summary**:
+-   Chicago 2014 (125/418)
+-   Chicago 2017 (56/654)
+-   St Louis 2014 (65/160)
+-   St Louis 2017 (64/202)
+-   Boston 2014 (29/55)
+-   Boston 2017 (22/54)
 
 ```{r}
-# Put code to reverse engineer sentence here
+#Chicago
+homicide_data |>
+  filter(str_detect(reported_date, "2014")) |>
+  filter(str_detect(city, "Chicago")) 
+homicide_data |>
+  filter(str_detect(reported_date, "2014")) |>
+  filter(str_detect(city, "Chicago")) |>
+  filter(str_detect(disposition, "Closed by arrest"))
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "Chicago")) 
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "Chicago")) |>
+  filter(str_detect(disposition, "Closed by arrest"))
+#St Louis
+homicide_data |>
+  filter(str_detect(reported_date, "2014")) |>
+  filter(str_detect(city, "St. Louis")) 
+homicide_data |>
+  filter(str_detect(reported_date, "2014")) |>
+  filter(str_detect(city, "St. Louis")) |>
+  filter(str_detect(disposition, "Closed by arrest"))
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "St. Louis")) 
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "St. Louis")) |>
+  filter(str_detect(disposition, "Closed by arrest"))
+#Boston
+homicide_data |>
+  filter(str_detect(reported_date, "2014")) |>
+  filter(str_detect(city, "Boston")) 
+homicide_data |>
+  filter(str_detect(reported_date, "2014")) |>
+  filter(str_detect(city, "Boston")) |>
+  filter(str_detect(disposition, "Closed by arrest"))
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "Boston")) 
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "Boston")) |>
+  filter(str_detect(disposition, "Closed by arrest"))
 
 # Display results of code below this codeblock
 

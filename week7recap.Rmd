@@ -50,7 +50,7 @@ Most questions have a code block and a space for an answer below. Write the code
 
 ------------------------------------------------------------------------
 
-#### **Q3** How do I reorganize this list to see the ones that are the deepest first? What is the depth that shows up for the deepest one, and its magnitude? 
+#### **Q3** How do I reorganize this list to see the ones that are the deepest first? What is the depth that shows up for the deepest one, and its magnitude?
 
 ```{r}
 earthquakes |>
