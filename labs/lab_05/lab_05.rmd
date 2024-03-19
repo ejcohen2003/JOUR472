@@ -84,7 +84,7 @@ emergency_calls |>
 
 Q3. Now let's look at locations. Which ones have the most calls? How would you describe them (feel free to search for more information on them)? Is there anything about the structure of the original data that might make you less confident in the counts by location or date?
 
-A3.
+A3. The amount of calls from 4540 silver spring rd is shocking
 
 ```{r}
 emergency_calls |> 
@@ -96,4 +96,4 @@ emergency_calls |>
 
 Q4. What's the best story idea or question you've seen as a result of the work you've done in this lab?
 
-A4.
+A4. What I'd be most interested in is how this years data compares to previous years and what's gone into that trend.
