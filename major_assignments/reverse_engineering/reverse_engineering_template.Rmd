@@ -64,6 +64,15 @@ In this notebook, we are reverse engineering five sentences from the story.
 homicide_data |>
   filter(str_detect(reported_date, "2014")) |>
   filter(str_detect(city, "Baltimore")) |>
+  summarise(
+    sum(str_detect(disposition, "Closed by arrest")) / n()
+  )
+
+
+
+homicide_data |>
+  filter(str_detect(reported_date, "2014")) |>
+  filter(str_detect(city, "Baltimore")) |>
   filter(str_detect(disposition, "Closed by arrest"))
 ```
 
@@ -85,8 +94,8 @@ filter(str_detect(disposition, "Closed by arrest"))
 
 ### Sentence 3
 
--   **Sentence text**: n Chicago, the homicide arrest rate has dropped 21 percentage points, in Boston it has dropped 12 points and in St. Louis it is down 9.
--   **Analysis summary**:
+-   **Sentence text**: In Chicago, the homicide arrest rate has dropped 21 percentage points, in Boston it has dropped 12 points and in St. Louis it is down 9.
+-   **Analysis summary**: We were able to
 -   Chicago 2014 (125/418)
 -   Chicago 2017 (56/654)
 -   St Louis 2014 (65/160)
@@ -147,11 +156,44 @@ homicide_data |>
 
 ### Sentence 4
 
--   **Sentence text**: [Paste in sentence to engineer here]
--   **Analysis summary**: [Write up two to three sentences describing the results of your analysis. Were you able to confirm the finding? If not, why not?]
+-   **Sentence text**: (referring to Baltimore). Since 2015, the arrest rate hasn’t topped 30 percent in any year.
+
+-   **Analysis summary**:
+
+    2015: 87/342 (25.4%)
+
+    2016: 72/320 (22.5%)
+
+    2017: 93/340 (27.3%)
 
 ```{r}
-# Put code to reverse engineer sentence here
+homicide_data |>
+  filter(str_detect(reported_date, "2015")) |>
+  filter(str_detect(city, "Baltimore"))
+
+homicide_data |>
+  filter(str_detect(reported_date, "2015")) |>
+  filter(str_detect(city, "Baltimore")) |>
+  filter(str_detect(disposition, "Closed by arrest"))
+
+homicide_data |>
+  filter(str_detect(reported_date, "2016")) |>
+  filter(str_detect(city, "Baltimore"))
+
+homicide_data |>
+  filter(str_detect(reported_date, "2016")) |>
+  filter(str_detect(city, "Baltimore")) |>
+  filter(str_detect(disposition, "Closed by arrest"))
+
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "Baltimore"))
+
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "Baltimore")) |>
+  filter(str_detect(disposition, "Closed by arrest"))
+
 
 # Display results of code below this codeblock
 
