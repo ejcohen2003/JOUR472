@@ -55,102 +55,112 @@ In this notebook, we are reverse engineering five sentences from the story.
 
 ### Sentence 1
 
--   **Sentence text**: [Paste in sentence to engineer here]
--   **Analysis summary**: When coding to find the total number of murders in Baltimore 2014, there were 211. Then when you filter that to only the ones that are closed by arrest, it was 86. 86/211=0.407, which is about 41%
+-   **Sentence text**:"City police made an arrest in 41 percent of homicides in 2014"
+-   **Analysis summary**: When filtering for Baltimore in strictly 2014, the number given is 211. After this finding we used Str_detect to find which cases were closed, we did 86/211 which equals 40.7 which was the Washington Post reported.
 
 ```{r}
 # Put code to reverse engineer sentence here: City police made an arrest in 41 percent of homicides in 2014
 # Display results of code below this codeblock
 homicide_data |>
-  filter(str_detect(reported_date, "2014")) |>
+   filter(str_detect(reported_date, "2014")) |>
   filter(str_detect(city, "Baltimore")) |>
   summarise(
     sum(str_detect(disposition, "Closed by arrest")) / n()
   )
-
-
-
-homicide_data |>
-  filter(str_detect(reported_date, "2014")) |>
-  filter(str_detect(city, "Baltimore")) |>
-  filter(str_detect(disposition, "Closed by arrest"))
 ```
 
 ### Sentence 2
 
 -   **Sentence text**: Community leaders and residents say that leaves hundreds of families who have been robbed of a loved one without a chance at seeing justice done. Of the 1,002 homicides between 2015 and the beginning of this year, just 252 — one out of every four — resulted in an arrest."
--   **Analysis summary**: [Write up two to three sentences describing the results of your analysis. Were you able to confirm the finding? If not, why not?]
+-   **Analysis summary**: We found the correct answer by looking at each year since 2015 to when the article was published, and then filtering which of these were closed by arrest which was 252
 
 ```{r}
 homicide_data |>
-  filter(str_detect(reported_date, "2015") | str_detect(reported_date, "2016") | str_detect(reported_date, "2017"))|>
-filter(str_detect(city, "Baltimore")) |>
-filter(str_detect(disposition, "Closed by arrest"))
-
-
-# Display results of code below this codebkloc
-
+ filter(str_detect(reported_date, "2015") | str_detect(reported_date, "2016") | str_detect(reported_date, "2017"))|>
+  filter(str_detect(city, "Baltimore")) |>
+  summarise(
+    sum(str_detect(disposition, "Closed by arrest")) / n()
+  )
 ```
 
 ### Sentence 3
 
--   **Sentence text**: In Chicago, the homicide arrest rate has dropped 21 percentage points, in Boston it has dropped 12 points and in St. Louis it is down 9.
--   **Analysis summary**: We were able to
--   Chicago 2014 (125/418)
--   Chicago 2017 (56/654)
--   St Louis 2014 (65/160)
--   St Louis 2017 (64/202)
--   Boston 2014 (29/55)
--   Boston 2017 (22/54)
+-   **Sentence text**: Of 50 of the nation’s largest cities, Baltimore is one of 34 where police now make homicide arrests less often than in 2014, according to a Washington Post analysis. In Chicago, the homicide arrest rate has dropped 21 percentage points, in Boston it has dropped 12 points and in St. Louis it is down 9.
+
+-   **Analysis summary**: We were able to confirm this finding by the Washington Post by comparing the 2014 data to the 2017 data in each city. For instance:
+
+    St Louis 2014 (65/160)=40.6% , 2017 (64/202)=31.7% — 9% drop
+
+    Boston 2014 (29/55)=52.7%, 2017 (22/54)40.7% — 12% drop
+
+    Chicago: 2014 (125/418)=29.9%, 2017 (56/654)=8.5% — 21% drop
 
 ```{r}
-#Chicago
-homicide_data |>
-  filter(str_detect(reported_date, "2014")) |>
-  filter(str_detect(city, "Chicago")) 
-homicide_data |>
-  filter(str_detect(reported_date, "2014")) |>
-  filter(str_detect(city, "Chicago")) |>
-  filter(str_detect(disposition, "Closed by arrest"))
-homicide_data |>
-  filter(str_detect(reported_date, "2017")) |>
-  filter(str_detect(city, "Chicago")) 
-homicide_data |>
-  filter(str_detect(reported_date, "2017")) |>
-  filter(str_detect(city, "Chicago")) |>
-  filter(str_detect(disposition, "Closed by arrest"))
-#St Louis
+#St. Louis 
 homicide_data |>
   filter(str_detect(reported_date, "2014")) |>
   filter(str_detect(city, "St. Louis")) 
-homicide_data |>
-  filter(str_detect(reported_date, "2014")) |>
-  filter(str_detect(city, "St. Louis")) |>
-  filter(str_detect(disposition, "Closed by arrest"))
-homicide_data |>
-  filter(str_detect(reported_date, "2017")) |>
-  filter(str_detect(city, "St. Louis")) 
-homicide_data |>
-  filter(str_detect(reported_date, "2017")) |>
-  filter(str_detect(city, "St. Louis")) |>
-  filter(str_detect(disposition, "Closed by arrest"))
-#Boston
-homicide_data |>
-  filter(str_detect(reported_date, "2014")) |>
-  filter(str_detect(city, "Boston")) 
-homicide_data |>
-  filter(str_detect(reported_date, "2014")) |>
-  filter(str_detect(city, "Boston")) |>
-  filter(str_detect(disposition, "Closed by arrest"))
-homicide_data |>
-  filter(str_detect(reported_date, "2017")) |>
-  filter(str_detect(city, "Boston")) 
-homicide_data |>
-  filter(str_detect(reported_date, "2017")) |>
-  filter(str_detect(city, "Boston")) |>
-  filter(str_detect(disposition, "Closed by arrest"))
 
-# Display results of code below this codeblock
+homicide_data |>
+  filter(str_detect(reported_date, "2014")) |>
+  filter(str_detect(city, "St. Louis")) |>
+    summarise(
+  sum(str_detect(disposition, "Closed by arrest")) / n()
+    )
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "St. Louis")) 
+
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "St. Louis")) |>
+    summarise(
+  sum(str_detect(disposition, "Closed by arrest")) / n()
+    )
+
+#Boston 
+homicide_data |>
+  filter(str_detect(reported_date, "2014")) |>
+  filter(str_detect(city, "Boston")) 
+
+homicide_data |>
+  filter(str_detect(reported_date, "2014")) |>
+  filter(str_detect(city, "Boston")) |>
+    summarise(
+  sum(str_detect(disposition, "Closed by arrest")) / n()
+    )
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "Boston")) 
+
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "Boston")) |>
+    summarise(
+  sum(str_detect(disposition, "Closed by arrest")) / n()
+    )
+
+#Chicago 
+homicide_data |>
+  filter(str_detect(reported_date, "2014")) |>
+  filter(str_detect(city, "Chicago")) 
+
+homicide_data |>
+  filter(str_detect(reported_date, "2014")) |>
+  filter(str_detect(city, "Chicago")) |>
+    summarise(
+  sum(str_detect(disposition, "Closed by arrest")) / n()
+    )
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "Chicago")) 
+
+homicide_data |>
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "Chicago")) |>
+    summarise(
+  sum(str_detect(disposition, "Closed by arrest")) / n()
+    )
 
 ```
 
@@ -160,54 +170,57 @@ homicide_data |>
 
 -   **Analysis summary**:
 
-    2015: 87/342 (25.4%)
-
-    2016: 72/320 (22.5%)
-
-    2017: 93/340 (27.3%)
+    Our findings show that each of these three years are below 30 percent. the exact numbers are 2017- 27.3%. 2016- 22.5%. 2015- 25.4%
 
 ```{r}
 homicide_data |>
-  filter(str_detect(reported_date, "2015")) |>
+filter(str_detect(reported_date, "2015")) |>
   filter(str_detect(city, "Baltimore"))
 
 homicide_data |>
   filter(str_detect(reported_date, "2015")) |>
   filter(str_detect(city, "Baltimore")) |>
-  filter(str_detect(disposition, "Closed by arrest"))
-
+  summarize(
+  sum(str_detect(disposition, "Closed by arrest")) / n())
+    
 homicide_data |>
-  filter(str_detect(reported_date, "2016")) |>
+filter(str_detect(reported_date, "2016")) |>
   filter(str_detect(city, "Baltimore"))
 
 homicide_data |>
   filter(str_detect(reported_date, "2016")) |>
   filter(str_detect(city, "Baltimore")) |>
-  filter(str_detect(disposition, "Closed by arrest"))
+  summarize(
+  sum(str_detect(disposition, "Closed by arrest")) / n())
 
 homicide_data |>
-  filter(str_detect(reported_date, "2017")) |>
+filter(str_detect(reported_date, "2017")) |>
   filter(str_detect(city, "Baltimore"))
 
 homicide_data |>
   filter(str_detect(reported_date, "2017")) |>
   filter(str_detect(city, "Baltimore")) |>
+  summarize(
+  sum(str_detect(disposition, "Closed by arrest")) / n())
+
+homicide_data |> 
+  filter(str_detect(reported_date, "2017")) |>
+  filter(str_detect(city, "Baltimore")) |>
   filter(str_detect(disposition, "Closed by arrest"))
-
-
-# Display results of code below this codeblock
 
 ```
 
 ### Sentence 5
 
--   **Sentence text**: [Paste in sentence to engineer here]
--   **Analysis summary**: [Write up two to three sentences describing the results of your analysis. Were you able to confirm the finding? If not, why not?]
+-   **Sentence text**: In each of those neighborhoods, police make an arrest in fewer than 25 percent of cases, including 16 percent in Sandtown-Winchester.**Analysis summary**: In order to find the zip code of Sandtown-Winchester, we did a google search on the longitude and latitude of the town. The issue with route, is that it's an approximation and theoretically could be wrong because it's not exact. (We were unsure if the range was fully accurate). In order to find specific longitude and latitude we would use “TidyGeocoder,” but we did not have the capacity to run this full code because it would take a great length of time.
 
 ```{r}
-# Put code to reverse engineer sentence here
+homicide_data |>
+filter(str_detect(lat,'39.303')) |>
+filter(str_detect(lon,'-76.64')) |>
+  summarize(
+  sum(str_detect(disposition, "Closed by arrest")) / n())
 
-# Display results of code below this codeblock
 
 ```
 
