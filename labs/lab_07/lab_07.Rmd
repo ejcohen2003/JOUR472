@@ -107,7 +107,12 @@ moco_pop_overdose <- moco_pop_overdose |>
 
 **Q5** Go back to your joined dataframe from Q3 and add two more columns representing the minimum and maximum populations based on the estimate and margin of error, then calculate per capita rates for each. Do you get the same two zip codes for the highest and lowest as you did before? Does that give you more or less confidence in your answers to Q3?
 
-**A5**
+**A5** I think this gives more confidence in my answers to Q3 because both the top 2 highest and bottom 2 lowests are same for both the highest and lowest populations based on MOE.
 
 ```{r}
+montgomery_pop_overdose <- moco_pop_overdose |>
+  mutate(minimum_pop = (estimate-moe)) |>
+  mutate(maximum_pop = (estimate+moe)) |>
+  mutate(minimum_per_1k = (total_calls/minimum_pop)*1000) |>
+  mutate(maximum_per_1k = (total_calls/maximum_pop)*1000)
 ```
