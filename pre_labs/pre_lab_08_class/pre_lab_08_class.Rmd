@@ -70,7 +70,7 @@ With ggplot, the first thing we'll always do is draw a blank canvas that will co
 
 ### Task 4: Create a bar chart
 
-**Task** Run the following code. Explain what you see after running the code in the space below. **Answer**
+**Task** Run the following code. Explain what you see after running the code in the space below. **It's a bar chart with the calls by month and is sorted so the months with the most calls are further along the X axis, but doesn't seem to be labeled very well**
 
 ```{r}
 baltco_911_calls_by_month |>
@@ -80,7 +80,7 @@ baltco_911_calls_by_month |>
 
 ### Task 5: Run the following code
 
-**Task** Run the following code. Explain what you see after running the code in the space below. What has changed from the last codeblock? **Answer**
+**Task** Run the following code. Explain what you see after running the code in the space below. What has changed from the last codeblock? **It switched the X and Y axis'**
 
 ```{r}
 
@@ -94,7 +94,7 @@ baltco_911_calls_by_month_bar
 
 ### Task 6: Run the following code
 
-**Task** Run the following code. What do you think this does? **Answer**
+**Task** Run the following code. What do you think this does? **Makes the ggplot an image**
 
 ```{r}
 ggsave('baltco_911_calls_by_month_bar.png', plot = baltco_911_calls_by_month_bar, width = 16, height = 8)
@@ -110,7 +110,7 @@ So, let's use the same Baltimore County data and generate a count of contributio
 
 ### Task 7: Create a dataframe of 911 calls by date
 
-**Task** Run the following code. Explain what you see after running the code in the space below. **Answer**
+**Task** Run the following code. Explain what you see after running the code in the space below. **Calls by each individual date ranging from 2/06/22-1/31/23**
 
 ```{r}
 baltco_911_calls_by_date <- baltco_911_calls |>
@@ -128,7 +128,7 @@ We'll put the date on the x axis and total contributions on the y axis.
 
 ### Task 8: Run the following code
 
-**Task** Run the following code. Explain what you see after running the code in the space below. **Answer**
+**Task** Run the following code. Explain what you see after running the code in the space below. **A line plot but it looks like it's a little too condensed because the value goes up and down pretty rapidly on a very steep incline/decline**
 
 ```{r}
 baltco_911_calls_by_date |>
@@ -146,7 +146,7 @@ We'll set the date_breaks to appear for every week; if we wanted every month, we
 
 ### Task 9: Run the following code
 
-**Task** Run the following code. Explain what you see after running the code in the space below. **Answer**
+**Task** Run the following code. Explain what you see after running the code in the space below. **It changes the labels for the dates and they become overly jumbled**
 
 ```{r}
 baltco_911_calls_by_date |>
@@ -159,7 +159,7 @@ Those are a little hard to read, so we can turn them 45 degrees to remove the ov
 
 ### Task 10: Run the following code
 
-**Task** Run the following code. Explain what you see after running the code in the space below. **Answer**
+**Task** Run the following code. Explain what you see after running the code in the space below. **It changes the orientation of the date labels and while it definitely isn't perfect, it's a much better solution than the one in task 9**
 
 ```{r}
 baltco_911_calls_by_date |>

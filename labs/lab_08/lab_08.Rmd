@@ -122,4 +122,19 @@ To answer this question, do the following:
 **A3.**
 
 ```{r}
+pg_calls_zipcodes <- pg_calls |> group_by(zipcode) |> summarize(total_calls = n())
+
+md_median_income_zip <- get_acs(geograph = 'zcta', variables = 'B19013_001', state = 'MD', year =2019)
+
+pg_calls_with_income <- pg_calls_zipcodes |> inner_join (md_median_income_zip, by = c('zipcode'='GEOID'))
+
+ggplot(pg_calls_with_income, aes(x=estimate,y=total_calls))+geom_point()
+
+ggplot(pg_calls_with_income, aes(x=estimate,y-total_calls))+geom_point()+
+  labs(
+    title = 'Wealthier areas of PG county have fewer overdose calls',
+    x = 'Median income',
+    y = 'Total calls'
+  )+
+  geom_text(aes(x=estimate+1,y=total_calls, label= zipcode), check_overlap = TRUE, size=2,angle=45)
 ```
