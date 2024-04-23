@@ -94,6 +94,8 @@ md_votes_by_type <- md_votes_by_type |>
   mutate(pct_early = (early/total)*100,
          pct_election_day = (election_day/total)*100,
          pct_mail = mail/total *100)
+
+write_csv(md_votes_by_type, 'data/md_votes_by_type')
 ```
 
 **Q3.** You want to know more about the geography of 911 overdose calls
