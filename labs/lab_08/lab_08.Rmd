@@ -48,7 +48,7 @@ pg_calls <- pg_calls |>
 
 Compare the results here to those from the pre_lab_08 bar chart - are there major differences in the months with the highest and lowest figures? Describe that below.
 
-**A1.**
+**A1. I would say there are very few similarities and there are major differences between the charts here and in the pre lab. The most obvious difference is that December has the most calls in this data set but the second least of any month in the pre lab/Baltimore data.**
 
 ```{r}
 pg_calls_month <- pg_calls |>
@@ -83,9 +83,21 @@ pg_calls_month |>
 
 Describe the pattern of results; you may want to look at the data to dig into particular outliers.
 
-**A2.**
+**A2. It increases throughout the year with some minor ups and downs but hits its peak midway through the year with a potential outlier of over 40 calls in a week**
 
 ```{r}
+pg_calls_week <- pg_calls |>
+  group_by(week) |> 
+  summarize(total_calls = n())
+
+pg_calls_week |> 
+  ggplot() + 
+  geom_line(aes(x=week, y=total_calls)) + 
+  labs(
+    title="Prince George's County 911 Overdose Calls By Week",
+    y = "number of calls",
+    x = "week"
+  )
 
 ```
 

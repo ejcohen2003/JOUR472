@@ -50,7 +50,7 @@ readable labels and values \* Publish your chart \* Describe your
 thought process below - why you chose to make the chart you did - and
 add the URL of your chart.
 
-**A1.**
+**A1.**<https://www.datawrapper.de/_/nYv0a/>
 
 ```{r}
 md_gov_county <- read_csv("data/md_gov_county.csv") |> clean_names()
@@ -82,9 +82,18 @@ column to get the option of "hiding" it in any visualization.
 What do you think the story here is? Put the answer below along with the
 URL of your chart.
 
-**A2.**
+**A2.**<https://www.datawrapper.de/_/faQOT/>
+
+I think the story is that the voting types are starting to resemble
+pre-COVID voting types instead of the skewed 2020 version.
 
 ```{r}
+md_votes_by_type <- read_csv("data/md_votes_by_type.csv") |> clean_names()
+
+md_votes_by_type <- md_votes_by_type |>
+  mutate(pct_early = (early/total)*100,
+         pct_election_day = (election_day/total)*100,
+         pct_mail = mail/total *100)
 ```
 
 **Q3.** You want to know more about the geography of 911 overdose calls
@@ -112,4 +121,11 @@ more about? Put the answer below along with the URL of your map.
 **A3.**
 
 ```{r}
+mg_co_911 <- read_csv("data/montgomery_2022_overdoses.csv")
+
+mg_co_911_zip <- mg_co_911 |> 
+  group_by(zip) |> 
+  summarize(count = n()) |>
+  mutate(zip_pct = (count/sum(count))*100)
+
 ```
