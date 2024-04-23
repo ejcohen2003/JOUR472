@@ -130,4 +130,5 @@ mg_co_911_zip <- mg_co_911 |>
   summarize(count = n()) |>
   mutate(zip_pct = (count/sum(count))*100)
 
+write_csv(mg_co_911, 'data/montgomery_2022_overdoses_pct.csv')
 ```
