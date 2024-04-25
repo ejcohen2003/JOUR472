@@ -1,0 +1,38 @@
+---
+title: "final"
+output: html_document
+date: "2024-04-23"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Loading libraries
+
+```{r}
+library(rvest)
+library(tidyverse)
+library(janitor)
+library(lubridate)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+bgg_data <- read_csv2("data/bgg_dataset.csv") |> clean_names()
+
+bgg_data |>
+  group_by(domains) |>
+  summarise(count=n()) |>
+  arrange(desc(count))
+```
+
+```{r}
+bgg_data |>
+  group_by(domains) |>
+  summarize(average_rating = mean(rating_average)) |>
+  arrange(desc(average_rating))
+```

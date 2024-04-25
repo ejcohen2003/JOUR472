@@ -120,7 +120,11 @@ choropleth map in Datawrapper. You will need to:
 What do you think the story here is, and what would you want to know
 more about? Put the answer below along with the URL of your map.
 
-**A3.**
+**A3. It's hard for me to identify a full story based on this, but one
+potential option could be analyzing the common denominators of the zips
+with the highest counts to figure out why they may be so high**
+
+<https://www.datawrapper.de/_/Z6jsi/>
 
 ```{r}
 mg_co_911 <- read_csv("data/montgomery_2022_overdoses.csv")
