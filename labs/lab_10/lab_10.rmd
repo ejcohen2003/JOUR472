@@ -38,7 +38,9 @@ Get the geometry for Maryland's counties using tigris and, joining that datafram
 
 ```{r}
 #Calculate percentages for both candidates and the difference between them per county
-
+md_state_wide_county <- read_csv('data/md_statewise_county.csv') |> clean_names()
+md_state_wide_county <- md_state_wide_county |> mutate(
+  total_votes_gov= cox + moore +lashar + wallace + harding + sefcik + gov_writein, total_votes_ag= brown + peroutka + ag_writein, pct_moore= moore/(total_votes_gov)*100, pct_brown= brown/(total_votes_gov)*100, pct_difference= pct_moore-pct_brown)
 ```
 
 ```{r}
