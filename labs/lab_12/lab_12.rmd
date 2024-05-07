@@ -101,11 +101,7 @@ top_trigrams <- md_attorney_sanctions |>
 
 ```{r}
 md_attorney_sanctions |> 
-  unnest_tokens(trigram, text, token = "ngrams", n = 3) |>
-  separate(trigram, c("word1", "word2", "word3"), sep = " ") |>
-  filter(!word1 %in% stop_words$word) |>
-  filter(!word2 %in% stop_words$word) |>
-  filter(!word3 %in% stop_words$word) |>
+  filter(str_detect(text, "attorney trust account")) |>
   group_by(fiscal_year) |>
   summarise(count=n())
 
@@ -113,4 +109,4 @@ md_attorney_sanctions |>
 
 ```
 
-**A3. It says it appeared 486 times in 2020 but I'm not sure that that's correct**
+**A3.I don't know how to find the reasoning behind it, but it seems like it was brought up more in more recent years. It was used 26 times in 2020 which was the most, and 25 times in 2019.**
