@@ -61,3 +61,11 @@ bgg |>
   mutate(top_total_time = sum(play_time)) |>
     mutate(top_avg_time = total_time/count)
 ```
+
+```{r}
+strategy_games <- bgg |>
+  filter(str_detect(domains, "Strategy")) |>
+  summarize(average = mean(rating_average)) |>
+  arrange(desc(average))
+  
+```
