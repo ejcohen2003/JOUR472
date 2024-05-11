@@ -75,7 +75,7 @@ filter(str_detect(type
 
 ```{r}
 bgg |>
-filter(year_published>=1970) 
+filter(year_published>=1920) 
 year_to_decade <- function(year_published) {
   ((year_published %/% 10) * 10)
 } 
@@ -85,7 +85,7 @@ bgg_with_decades <- bgg |>
 
 decade_ratings <- bgg_with_decades |>
   group_by(decade_published) |>
-  summarize(average = mean(rating_average)) |>
+  summarize(average_rating = mean(rating_average)) |>
   filter(decade_published>=1920)
 
   
@@ -103,6 +103,11 @@ cor.test(bgg$min_age, bgg$complexity_average)
 
 ```
 
-\`\`\`{)}
+``` )
+```
+
+```{r}
+
+```
 
 \`\`\`
