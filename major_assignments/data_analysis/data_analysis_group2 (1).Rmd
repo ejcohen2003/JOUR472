@@ -86,8 +86,9 @@ bgg_with_decades <- bgg |>
 decade_ratings <- bgg_with_decades |>
   group_by(decade_published) |>
   summarize(average_rating = mean(rating_average)) |>
-  filter(decade_published>=1920)
+  filter(decade_published>=1920) |>
 
+decade_ratings
   
 
 
@@ -95,19 +96,23 @@ decade_ratings <- bgg_with_decades |>
 
 ```{r}
 bgg |>
-  select(-min_age, -complexity_average) |>
+  select(min_age, complexity_average) |>
   correlate()
 
 cor.test(bgg$min_age, bgg$complexity_average)
 
+bgg_kids_6_to_12 <- bgg |>
+  filter(min_age >= 6 & min_age <= 12)
+
+cor.test(bgg_kids_6_to_12$min_age, bgg_kids_6_to_12$complexity_average)
+
+bgg_older <- bgg |>
+  filter(min_age>=13)
+cor.test(bgg_older$min_age, bgg_older$complexity_average)
 
 ```
 
 ``` )
-```
-
-```{r}
-
 ```
 
 \`\`\`

@@ -107,7 +107,7 @@ county_childcare <- county_childcare|>
 
 ------------------------------------------------------------------------
 
-#### **Q4** Make a map of the results for question 3. Are there any areas of the state that are more lacking in childcare facilities? 
+#### **Q4** Make a map of the results for question 3. Are there any areas of the state that are more lacking in childcare facilities?
 
 ```{r}
 ggplot() +
@@ -195,4 +195,4 @@ reports |>
   top_n(10)
 ```
 
-##### A6: The initial findings almost all said emergency, which prompted me to add emergency to the list of stop words. With the new results that don't include the ones with 'emercency', I'm most interested in cleaning supplies because I wonder how/why that can be an issue. 
+##### A6: The initial findings almost all said emergency, which prompted me to add emergency to the list of stop words. With the new results that don't include the ones with 'emercency', I'm most interested in cleaning supplies because I wonder how/why that can be an issue.
